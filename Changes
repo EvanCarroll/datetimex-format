@@ -1,0 +1,10 @@
+Revision history for DateTimeX-Format
+
+0.01_02   Feb 17, 2009
+          Made the helper function ->new_datetime, uses ->debug, and
+          supports timeonly DT 
+
+0.01_01   Feb 17, 2009
+          Got something up and working this serves as a role that all modules
+          in DateTimeX::Format should use. 
+
