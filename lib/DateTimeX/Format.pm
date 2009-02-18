@@ -6,6 +6,7 @@ use Moose::Role;
 use 5.010;
 use mro 'c3';
 
+use DateTime;
 use DateTime::Locale;
 use DateTime::TimeZone;
 use MooseX::Types::DateTime;
@@ -14,13 +15,6 @@ use Carp;
 requires 'parse_datetime';
 
 our $VERSION = '00.01_02';
-
-has 'pattern' => (
-	isa         => 'Maybe[Str]'
-	, is        => 'rw'
-	, required  => 1
-	, predicate => 'has_pattern'
-);
 
 has 'locale' => (
 	isa         => 'DateTime::Locale'
@@ -41,15 +35,6 @@ has 'debug' => ( isa => 'Bool', is => 'ro', default => 0 );
 
 around 'parse_datetime' => sub {
 	my ( $sub, $self, $time, $override, @args ) = @_;
-
-
-	## Set Pattern: from args, then from object
-	my $pattern = $override->{ pattern }
-		// $self->has_pattern
-		? $self->pattern
-		: croak "No pattern supplied to constructor or the call to parse_datetime"
-	;
-
 
 	## Set Timezone: from args, then from object
 	my $timezone = $override->{ timezone };
@@ -89,7 +74,6 @@ around 'parse_datetime' => sub {
 	my $env = {
 		timezone   => $timezone
 		, locale   => $locale
-		, pattern  => $pattern
 		, override => $override
 	};
 
@@ -151,9 +135,6 @@ DateTimeX::Format - Moose Roles for building next generation DateTime formats
 	package DateTimeX::Format::Bleh;
 	with 'DateTimeX::Format';
 
-	## If your module doesn't require a user sent pattern
-	has '+pattern' => ( default => 'Undef' );
-
 	sub parse_datetime {
 		my ( $time, $env, @args ) = @_;
 		# expr;
@@ -169,7 +150,6 @@ DateTimeX::Format - Moose Roles for building next generation DateTime formats
 	$dt->debug(0);
 	$dt->timezone( $timezone );
 	$dt->locale( $locale );
-	$dt->pattern( $pattern );
 	$dt->defaults(1);
 
 	$dt->parse_datetime( $time, {locale=>$locale_for_call} );
@@ -179,8 +159,14 @@ DateTimeX::Format - Moose Roles for building next generation DateTime formats
 		, locale  => $locale_for_call
 	};
 	$dt->parse_datetime( $time, $env, @additional_arguments );
-
 	$dt->parse_datetime( $time, {timezone=>$timezone_for_call} )
+	
+	## if your module requires a pattern, or has variable time-input formats
+	## see the Moose::Role DateTimeX::Format::CustomPattern
+	package DateTimeX::Format::Strptime;
+	with 'DateTimeX::Format::CustomPattern';
+	with 'DateTimeX::Format';
+
 
 =head1 DESCRIPTION
 
