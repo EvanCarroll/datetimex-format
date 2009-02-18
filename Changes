@@ -1,5 +1,11 @@
 Revision history for DateTimeX-Format
 
+0.01_04   Feb 18, 2009
+          Fixed doc issues
+
+0.01_03   Feb 18, 2009
+          Pulled CustomPattern out into its own role
+
 0.01_02   Feb 17, 2009
           Made the helper function ->new_datetime, uses ->debug, and
           supports timeonly DT 

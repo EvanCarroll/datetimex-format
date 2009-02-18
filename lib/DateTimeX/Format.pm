@@ -14,7 +14,7 @@ use Carp;
 
 requires 'parse_datetime';
 
-our $VERSION = '00.01_02';
+our $VERSION = '00.01_03';
 
 has 'locale' => (
 	isa         => 'DateTime::Locale'
@@ -178,7 +178,7 @@ In addition this module provides two other accessors to assist in the developmen
 
 =head1 OBJECT ENVIRONMENT
 
-All of these slots correspond to the environment: they can be supplied in the constructor or through accessors.
+All of these slots correspond to your object environment: they can be supplied in the constructor, or through accessors.
 
 =over 4
 
@@ -193,10 +193,6 @@ See the docs at L<MooseX::Types::DateTime> for informations about the coercions.
 Can be overridden in the call to ->parse_datetime.
 
 See the docs at L<MooseX::Types::DateTime> for informations about the coercions.
-
-=item * pattern( $str )
-
-Can be overridden in the call to ->parse_datetime.
 
 =item * debug( 1 | 0* )
 

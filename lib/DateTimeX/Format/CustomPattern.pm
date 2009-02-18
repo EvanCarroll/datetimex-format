@@ -41,7 +41,7 @@ __END__
 
 =head1 NAME
 
-DateTimeX::Format::CustomPattern
+DateTimeX::Format::CustomPattern - A Moose::Role for building DateTime Formats that require patterns
 
 =head1 DESCRIPTION
 
@@ -66,3 +66,15 @@ It adds an attribute "pattern", and behavies cosistant with the call-overriding 
 	});
 
 	$dt->parse_datetime( $time, {pattern => '%H:%M'} );
+
+=head1 OBJECT ENVIRONMENT
+
+All of these slots correspond to your object environment: they can be supplied in the constructor, or through accessors.
+
+=over 4
+
+=item * pattern( $str )
+
+Can be overridden in the call to ->parse_datetime.
+
+=back
