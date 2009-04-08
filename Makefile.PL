@@ -6,7 +6,8 @@ author   'Evan Carroll <me@evancarroll.com>';
 license  'perl';
 
 requires 'Moose';
-requires 'MooseX::Types::DateTime';
+requires 'MooseX::Traits';
+requires 'MooseX::Types::DateTime::ButMaintained';
 requires 'Moose::Role';
 
 requires 'DateTime';

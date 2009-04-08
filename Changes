@@ -1,7 +1,12 @@
 Revision history for DateTimeX-Format
 
+0.01_05   Feb 1X, 2009
+          Fixed docs, to show methods required
+
 0.01_04   Feb 18, 2009
           Fixed doc issues
+          Made composiing classes require format_datetime
+          Made coercions work from runtime call environment
 
 0.01_03   Feb 18, 2009
           Pulled CustomPattern out into its own role

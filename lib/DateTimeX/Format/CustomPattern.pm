@@ -1,9 +1,12 @@
 package DateTimeX::Format::CustomPattern;
+use Moose::Role;
+
 use strict;
 use warnings;
 
-use Moose::Role;
 use Carp;
+
+use namespace::clean -except => 'meta';
 
 has 'pattern' => (
 	isa         => 'Maybe[Str]'
@@ -47,7 +50,7 @@ DateTimeX::Format::CustomPattern - A Moose::Role for building DateTime Formats t
 
 This role must be composed B<before> L<DateTimeX::Format>.
 
-It adds an attribute "pattern", and behavies cosistant with the call-overriding environment of L<DateTimeX::Format>.
+It adds an attribute "pattern", and behavies consistant with the call-overriding environment of L<DateTimeX::Format>.
 
 =head1 SYNOPSIS
 	
@@ -58,11 +61,11 @@ It adds an attribute "pattern", and behavies cosistant with the call-overriding 
 	package main;
 
 	my $dt = DateTimeX::Format::RequiresPattern->new({
-		locale     => $locale
-		, timezone => $timezone
-		, pattern  => '%H:%M:%S'
-		, debug    => 0|1
-		, defaults => 0|1
+		locale       => $locale
+		, time_zone  => $timezone
+		, pattern    => '%H:%M:%S'
+		, debug      => 0|1
+		, defaults   => 0|1
 	});
 
 	$dt->parse_datetime( $time, {pattern => '%H:%M'} );

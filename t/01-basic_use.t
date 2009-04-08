@@ -7,6 +7,8 @@ sub parse_datetime {
 	[ $time, $env, @args ];
 };
 
+sub format_datetime {;}
+
 package main;
 use Test::More tests => 7;
 require_ok( 'DateTime::Locale' );
