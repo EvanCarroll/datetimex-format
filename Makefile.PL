@@ -16,6 +16,8 @@ requires 'DateTime::Locale';
 requires 'DateTime::TimeZone';
 requires 'Carp';
 
+repository 'git@github.com:EvanCarroll/datetimex-format.git';
+
 build_requires 'Test::More';
 
 auto_install;
