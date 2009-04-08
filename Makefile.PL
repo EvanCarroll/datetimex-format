@@ -10,6 +10,8 @@ requires 'MooseX::Traits';
 requires 'MooseX::Types::DateTime::ButMaintained';
 requires 'Moose::Role';
 
+requires 'namespace::clean';
+
 requires 'DateTime';
 requires 'DateTime::Locale';
 requires 'DateTime::TimeZone';

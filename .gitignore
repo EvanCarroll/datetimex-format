@@ -1,2 +1,9 @@
 .*\.swp
+MANIFEST.bak
 MANIFEST
+inc/
+Makefile
+Makefile.old
+META.yml
+pm_to_blib
+blib/*
