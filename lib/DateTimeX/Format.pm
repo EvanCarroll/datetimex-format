@@ -15,7 +15,7 @@ use namespace::clean -except => 'meta';
 requires 'parse_datetime';
 requires 'format_datetime';
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 has 'locale' => (
 	isa         => 'DateTime::Locale'
