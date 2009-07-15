@@ -1,4 +1,7 @@
 Revision history for DateTimeX-Format
+1.01      July 15, 2009
+          Fixed compilation error in CustomPattern role
+
 1.00      April 9, 2009
           Works under perl 5.08 now. (no 5.10 specific features)
           fixed a failing test from before (bad test count)
