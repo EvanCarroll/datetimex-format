@@ -3,8 +3,6 @@ use Moose::Role;
 
 use strict;
 use warnings;
-use 5.010;
-use mro 'c3';
 
 use DateTime;
 use DateTime::Locale;
@@ -17,7 +15,7 @@ use namespace::clean -except => 'meta';
 requires 'parse_datetime';
 requires 'format_datetime';
 
-our $VERSION = '00.01_06';
+our $VERSION = '1.00';
 
 has 'locale' => (
 	isa         => 'DateTime::Locale'
@@ -53,7 +51,7 @@ around 'parse_datetime' => sub {
 		$time_zone = DateTime::TimeZone->new( name => 'floating' );
 	}
 	else {
-			carp "No time_zone supplied instructed to not use defaults"
+		carp "No time_zone supplied instructed to not use defaults"
 	}
 
 
@@ -98,11 +96,11 @@ sub new_datetime {
 
 	if ( $self->debug ) {
 		carp "Year Month and Day should be specified if Year Month or Day is specified\n"
-			if ( $args->{day} // $args->{month} // $args->{year} )
+			if ( defined $args->{day} || defined $args->{month} || defined $args->{year} )
 			&& ( ! defined $args->{day} or ! defined $args->{month} or ! defined $args->{year} )
 		;
 		carp "Marking Year Month and Day as a default\n"
-			if not defined ($args->{day} // $args->{months} // $args->{year})
+			if not (defined $args->{day} || defined $args->{months} || defined $args->{year})
 		;
 	}
 
@@ -110,14 +108,14 @@ sub new_datetime {
 		time_zone => $args->{time_zone}
 		, locale  => $args->{locale}
 
-		, nanosecond  => $args->{nanosecond}  // 0
-		, second      => $args->{second}      // 0
-		, minute      => $args->{minute}      // 0
-		, hour        => $args->{hour}        // 0
+		, nanosecond  => ( defined ( $args->{nanosecond} ) ? $args->{nanosecond} : 0 )
+		, second      => ( defined ( $args->{second} ) ? $args->{second} : 0 )
+		, minute      => ( defined ( $args->{minute} ) ? $args->{minute} : 0 )
+		, hour        => ( defined ( $args->{hour} ) ? $args->{hour} : 0 )
 
-		, day     => $args->{day}    // 1
-		, month   => $args->{month}  // 1
-		, year    => $args->{year}   // 1
+		, day     => ( defined( $args->{day} ) ? $args->{day} : 1 )
+		, month   => ( defined( $args->{month} ) ? $args->{month} : 1 )
+		, year    => ( defined( $args->{year} ) ? $args->{year} : 1 )
 	);
 
 }

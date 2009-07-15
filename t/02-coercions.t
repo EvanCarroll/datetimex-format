@@ -10,7 +10,7 @@ sub parse_datetime {
 sub format_datetime { ; }
 
 package main;
-use Test::More tests => 2;
+use Test::More tests => 5;
 
 my $env = Class->new->parse_datetime( "foobar", { locale => 'en_AU', time_zone => 'America/Chicago' } );
 is ( ref($env->{locale}), 'DateTime::Locale::en_AU', 'Coerce from call arg of locale worked' );

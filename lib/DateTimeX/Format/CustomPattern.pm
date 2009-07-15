@@ -23,11 +23,16 @@ around 'parse_datetime' => sub {
 	;
 
 	## Set Pattern: from args, then from object
-	my $pattern = $env->{ override }->{ pattern }
-		// $self->has_pattern
-		? $self->pattern
-		: croak "No pattern supplied to constructor or the call to parse_datetime"
-	;
+	my $pattern
+	if ( defined $env->{override}{pattern} ) {
+		$pattern = $self->{override}{pattern}
+	}
+	elsif ( $self->has_pattern ) {
+		$pattern = $self->pattern
+	}
+	else {
+		croak "No pattern supplied to constructor or the call to parse_datetime"
+	}
 
 	$env->{ pattern } = $pattern;
 	
@@ -35,8 +40,6 @@ around 'parse_datetime' => sub {
 	my $dt = $self->$sub( $time , $env , @args );
 
 };
-
-no Moose::Role;
 
 1;
 

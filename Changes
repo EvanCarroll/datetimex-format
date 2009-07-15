@@ -1,4 +1,8 @@
 Revision history for DateTimeX-Format
+1.00      April 9, 2009
+          Works under perl 5.08 now. (no 5.10 specific features)
+          fixed a failing test from before (bad test count)
+
 0.01_06   April 8, 2009
           Finnally forked MooseX::Types::DateTime into
            MooseX::Types::ButMainted this allowed me to add support for Olson
