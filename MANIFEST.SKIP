@@ -41,3 +41,4 @@
 \.gitignore$
 MANIFEST.SKIP
 .gitignore
+INSTALL.SKIP
