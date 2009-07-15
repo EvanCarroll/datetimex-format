@@ -23,12 +23,12 @@ around 'parse_datetime' => sub {
 	;
 
 	## Set Pattern: from args, then from object
-	my $pattern
+	my $pattern;
 	if ( defined $env->{override}{pattern} ) {
 		$pattern = $self->{override}{pattern}
 	}
 	elsif ( $self->has_pattern ) {
-		$pattern = $self->pattern
+		$pattern = $self->pattern;
 	}
 	else {
 		croak "No pattern supplied to constructor or the call to parse_datetime"
