@@ -41,6 +41,8 @@ around 'parse_datetime' => sub {
 
 };
 
+with 'DateTimeX::Format';
+
 1;
 
 __END__

@@ -74,7 +74,7 @@ around 'parse_datetime' => sub {
 	}
 
 	my $env = {
-		time_zone   => $time_zone
+		time_zone  => $time_zone
 		, locale   => $locale
 		, override => $override
 	};
