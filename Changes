@@ -1,4 +1,8 @@
 Revision history for DateTimeX-Format
+1.02      July 16, 2009
+          Fixed role inclusion order / added test
+          Moved to use non-string types internally (deprecated in MX::Types now)
+
 1.01      July 15, 2009
           Fixed compilation error in CustomPattern role
 
