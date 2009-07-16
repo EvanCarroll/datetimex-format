@@ -41,6 +41,7 @@ around 'parse_datetime' => sub {
 
 };
 
+## KEEP IT HERE -- Roles in this care *ARE* order specific
 with 'DateTimeX::Format';
 
 1;
