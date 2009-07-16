@@ -18,7 +18,7 @@ has 'pattern' => (
 around 'parse_datetime' => sub {
 	my ( $sub, $self, $time, $env, @args ) = @_;
 
-	croak "The key 'override' is not present in the env HashRef\n"
+	croak "The key 'override' is not present in the env HashRef"
 		unless exists $env->{override}
 	;
 
@@ -54,15 +54,13 @@ DateTimeX::Format::CustomPattern - A Moose::Role for building DateTime Formats t
 
 =head1 DESCRIPTION
 
-This role must be composed B<before> L<DateTimeX::Format>.
-
 It adds an attribute "pattern", and behavies consistant with the call-overriding environment of L<DateTimeX::Format>.
 
 =head1 SYNOPSIS
 	
 	package DateTimeX::Format::RequiresPattern;
+	use Moose;
 	with 'DateTimeX::Format::CustomPattern';
-	with 'DateTimeX::Format';
 
 	package main;
 
