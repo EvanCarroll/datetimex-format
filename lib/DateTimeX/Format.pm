@@ -18,14 +18,14 @@ requires 'format_datetime';
 our $VERSION = '1.01';
 
 has 'locale' => (
-	isa         => 'DateTime::Locale'
+	isa         => Locale
 	, is        => 'rw'
 	, coerce    => 1
 	, predicate => 'has_locale'
 );
 
 has 'time_zone' => (
-	isa         => 'DateTime::TimeZone'
+	isa         => TimeZone
 	, is        => 'rw'
 	, coerce    => 1
 	, predicate => 'has_time_zone'
@@ -76,9 +76,9 @@ around 'parse_datetime' => sub {
 	my $env = {
 		time_zone  => $time_zone
 		, locale   => $locale
-		, override => $override
+		, override => $override ## A copy of the original hash
 	};
-
+	
 	## Calls the sub ( time, env, addtl args )
 	my $dt = $self->$sub( $time , $env , @args );
 
