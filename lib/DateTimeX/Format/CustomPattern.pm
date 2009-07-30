@@ -21,11 +21,14 @@ around 'parse_datetime' => sub {
 	croak "The key 'override' is not present in the env HashRef"
 		unless exists $env->{override}
 	;
+	croak '"time" is a required argument "time" for ->parse_datetime($time ...);'
+		unless defined $time;
+	;
 
 	## Set Pattern: from args, then from object
 	my $pattern;
 	if ( defined $env->{override}{pattern} ) {
-		$pattern = $self->{override}{pattern}
+		$pattern = $env->{override}{pattern}
 	}
 	elsif ( $self->has_pattern ) {
 		$pattern = $self->pattern;
