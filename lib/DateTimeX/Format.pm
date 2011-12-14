@@ -15,7 +15,7 @@ use namespace::clean -except => 'meta';
 requires 'parse_datetime';
 requires 'format_datetime';
 
-our $VERSION = '1.02';
+our $VERSION = '1.04';
 
 has 'locale' => (
 	isa         => Locale
@@ -39,7 +39,7 @@ around 'parse_datetime' => sub {
 	## Set Timezone: from args, then from object
 	my $time_zone;
 	if ( defined $override->{time_zone} ) {
-		$time_zone = MooseX::Types::DateTime::ButMaintained::to_TimeZone( $override->{time_zone} );
+		$time_zone = to_TimeZone( $override->{time_zone} );
 	}
 	elsif ( $self->has_time_zone ) {
 		$time_zone = $self->time_zone;
@@ -58,7 +58,7 @@ around 'parse_datetime' => sub {
 	## Set Locale: from args, then from object, then guess en_US
 	my $locale;
 	if ( defined $override->{locale} ) {
-		$locale = MooseX::Types::DateTime::ButMaintained::to_Locale( $override->{locale} );
+		$locale = to_Locale( $override->{locale} );
 	}
 	elsif ( $self->has_locale ) {
 		$locale = $self->locale

@@ -1,4 +1,8 @@
 Revision history for DateTimeX-Format
+1.03      December 14, 2011
+          Fixed helper method to not use absolute package because of upstream breakage
+          Changed repository to use non-protected-ssh one, added website to meta
+
 1.02      July 16, 2009
           Fixed role inclusion order / added test
           Moved to use non-string types internally (deprecated in MX::Types now)
