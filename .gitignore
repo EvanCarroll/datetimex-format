@@ -7,3 +7,5 @@ Makefile.old
 META.yml
 pm_to_blib
 blib/*
+MYMETA*
+DateTimeX-Format*.tar.gz
